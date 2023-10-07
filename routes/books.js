@@ -10,6 +10,7 @@ router.post("/create", async (req, res) => {
   console.log("req.body.title", req.body);
   const data = new Book({
     title: req.body.title,
+    authors: req.body.authors,
   });
   try {
     const savedData = await data.save();
@@ -22,7 +23,11 @@ router.post("/create", async (req, res) => {
 //Get all books
 router.get("/", async (req, res) => {
   try {
-    const data = await Book.find();
+    const data = await Book.find()
+      .populate("authors")
+      .then((author) => {
+        res.json(author);
+      });
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -32,7 +37,11 @@ router.get("/", async (req, res) => {
 //Get book using id
 router.get("/:id", async (req, res) => {
   try {
-    const data = await Book.findById(req.params.id);
+    const data = await Book.findById(req.params.id)
+      .populate("authors")
+      .then((author) => {
+        res.json(author);
+      });
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });

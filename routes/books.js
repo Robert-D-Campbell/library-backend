@@ -1,4 +1,5 @@
 const express = require("express");
+const Book = require("../models/book");
 
 const router = express.Router();
 
@@ -16,7 +17,7 @@ router.get("/", (req, res) => {
 
 //Get book using id
 router.get("/:id", (req, res) => {
-  res.send("Get Book");
+  res.send(req.params.id);
 });
 
 //Update book using id

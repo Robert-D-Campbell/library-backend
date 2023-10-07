@@ -1,6 +1,6 @@
 const express = require("express");
-var indexRouter = require("../routes/index");
-var bookRouter = require("../routes/books");
+const indexRouter = require("../routes/index");
+const bookRouter = require("../routes/books");
 
 module.exports = function (app) {
   app.use(express.json());

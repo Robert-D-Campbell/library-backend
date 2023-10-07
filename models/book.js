@@ -5,7 +5,7 @@ const bookSchema = new mongoose.Schema({
     required: true,
     type: String,
   },
-  timestamps: true,
 });
+bookSchema.set("timestamps", true);
 
 module.exports = mongoose.model("Book", bookSchema);

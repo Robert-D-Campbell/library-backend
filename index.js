@@ -15,8 +15,7 @@ database.once("connected", () => {
 });
 
 const app = express();
-
-app.use(express.json());
+require("./startup/index")(app);
 
 app.listen(3000, () => {
   console.log(`Server Started at ${3000}`);

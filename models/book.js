@@ -6,6 +6,12 @@ const bookSchema = new mongoose.Schema(
       required: true,
       type: String,
     },
+    topic: [
+      {
+        required: true,
+        type: String,
+      },
+    ],
     authors: [
       {
         required: true,
@@ -13,6 +19,10 @@ const bookSchema = new mongoose.Schema(
         ref: "Author",
       },
     ],
+    location: {
+      required: true,
+      type: String,
+    },
   },
   {
     timestamps: true,

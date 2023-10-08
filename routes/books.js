@@ -10,7 +10,9 @@ router.post("/create", async (req, res) => {
   console.log("req.body.title", req.body);
   const data = new Book({
     title: req.body.title,
+    topic: req.body.topic,
     authors: req.body.authors,
+    location: req.body.location,
   });
   try {
     const savedData = await data.save();

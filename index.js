@@ -1,5 +1,7 @@
 require("dotenv").config();
 const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const mongoConnectStr = process.env.DB_URL;
 
@@ -16,6 +18,13 @@ database.once("connected", () => {
 
 const app = express();
 require("./startup/index")(app);
+app.use(cors());
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(3000, () => {
   console.log(`Server Started at ${3000}`);

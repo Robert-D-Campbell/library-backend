@@ -6,12 +6,10 @@ const bookSchema = new mongoose.Schema(
       required: true,
       type: String,
     },
-    topic: [
-      {
-        required: true,
-        type: String,
-      },
-    ],
+    topic: {
+      required: true,
+      type: String,
+    },
     authors: [
       {
         required: true,

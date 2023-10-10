@@ -26,9 +26,8 @@ router.get("/", async (req, res) => {
     const data = await Author.find()
       .populate("books")
       .then((book) => {
-        res.json(book);
+        res.status(200).json(book);
       });
-    res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -40,9 +39,8 @@ router.get("/:id", async (req, res) => {
     const data = await Author.findById(req.params.id)
       .populate("books")
       .then((book) => {
-        res.json(book);
+        res.status(200).json(book);
       });
-    res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -57,7 +55,7 @@ router.patch("/:id", async (req, res) => {
 
     const result = await Author.findByIdAndUpdate(id, updatedData, options);
 
-    res.send(result);
+    res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -68,7 +66,7 @@ router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await Author.findByIdAndDelete(id);
-    res.send(`${data.name} with id ${id} has been deleted.`);
+    res.status(200).json(`${data.name} with id ${id} has been deleted.`);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

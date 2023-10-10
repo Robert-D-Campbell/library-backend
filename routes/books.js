@@ -28,9 +28,8 @@ router.get("/", async (req, res) => {
     const data = await Book.find()
       .populate("authors")
       .then((author) => {
-        res.json(author);
+        res.status(200).json(author);
       });
-    res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -42,9 +41,8 @@ router.get("/:id", async (req, res) => {
     const data = await Book.findById(req.params.id)
       .populate("authors")
       .then((author) => {
-        res.json(author);
+        res.status(200).json(author);
       });
-    res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

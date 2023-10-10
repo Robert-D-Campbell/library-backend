@@ -7,6 +7,6 @@ module.exports = function (app) {
   app.use(express.json());
 
   app.use("/api", indexRouter);
-  app.use("/books", bookRouter);
-  app.use("/authors", authorRouter);
+  app.use("/api/books", bookRouter);
+  app.use("/api/authors", authorRouter);
 };
